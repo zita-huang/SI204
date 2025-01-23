@@ -31,5 +31,4 @@ using namespace std;
         cout << "In decimal " << b1 << b2 << b3 << b4 << " = " << an << endl;
 
         return 0;
-
     }
