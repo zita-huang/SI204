@@ -5,22 +5,24 @@ Lab 2: Part 2
 **********/
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
     int main()
     {
+        //Prompt the User to enter in a decimal number
         cout << "Enter a number between 0 and 15: ";
         int d1;
         cin >> d1;
 
-        bool b1, b2, b3, b4;
-        b1 = (d1/1);
-        b2 = (d1/2);
-        b3 = (d1/4);
-        b4 = (d1/8);
+        //Conversion from decimal to binary
+        bool x, x1, x2, x3;
+        x = (d1/1)%2;
+        x1 = (d1/(2)%2);
+        x2 = (d1/(2*2)%2);
+        x3 = (d1/(2*2*2)%2);
 
-        cout << d1 << " in binary is " << b1 << b2 << b3 << b4 << endl;
+        //The end result
+        cout << d1 << " in binary is " << x3 << x2 << x1 << x << endl;
 
         return 0;
     }
