@@ -1,65 +1,51 @@
 /*****************
 File name: hw.cpp
 Author: MIDN Zita Huang (m272898)
-Homework 6
+Homework 8
 ****************/
 #include <iostream>
-#include <string>
-#include <cmath>
-
 using namespace std;
 
     int main()
     {
-        //Initial prompt to user
-        cout << "Values for a and b? ";
-        double a, b, num;
-        char c;
-        cin >> a >> c >> b;
-        
-        //User input command to execute
-        cout << "What do you want? ";
-        string command;
-        cin >> command;
+        //Defining the variables
+        int ck, sum, day, eaten, max;
+        sum = 0;
+        day = 0;
+        max = 0;
+        cout << "How many cookies? ";
+        cin >> ck;
 
-        //If-else statement to decipher between squaring or adding
-        if (command == "square")
+        //While loop for the cookies
+        while (ck > 0)
         {
-            //If-else if statement a or b to see which letter is being squared
-            char letter;
-            cin >> letter;
-            if (letter == 'a')
-            {
-                a = a * a;
-            }
-            else if (letter == 'b')
-            {
-                b = b * b;
-            }
-        }
-        else 
-        {
-            //Read the inputed command to include the reading of the integer
-            //If-else if statement to see which letter is going to be added
-            cin >> num >> command;
-            if (command == "to")
-            {
-                char letter;
-                cin >> letter;
-                if (letter == 'a')
-                {
-                    a += num;
-                }
-                else if (letter == 'b')
-                {
-                    b += num;
-                }
-            }
-        }
-        
-        //Display the end values of a and b
-        cout << "a = " << a << " and b = " << b << endl;
+            //Math for days and input for number of cookies in jar
+            day = 1 + day;
+            cout << "Cookies eaten on day " << day << ": ";
+            cin >> eaten;
 
+            //If eaten is greater than cookies in the jar
+            if (eaten > ck)
+            {
+               cout << "Not enough cookies!" << endl;
+               return 0;
+            }
+
+            //Math to check the cookies to eaten to the total eaten
+            ck = ck - eaten;
+            sum = sum + eaten;
+
+            //If statement to determine most cookies eatten in one day
+            if(eaten > max )
+            {
+                max = eaten;
+            }
+            
+        }  
+
+        //Result
+        cout << "You ate " << sum << " cookies over " << day << " days." << endl;
+        cout << "On your piggiest day you ate " << max << " cookies." << endl;
+       
         return 0;
-
     }

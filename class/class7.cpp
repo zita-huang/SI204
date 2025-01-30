@@ -1,16 +1,20 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 using namespace std;
 
     int main()
     {
-        int n = 5;
-        double x = 10.5;
-        char c = 'R';
-        string s = "Navy";
-        string t = "Army";
+        double n, sum;
+        cin >> n;
+        
+        while (n > 0)
+        {
+            sum = sum + n;
+            cin >> n;
 
-        cout << (s >= t) << endl;
+        }
+
+        cout << "sum is: " << sum << endl;
 
         return 0;
     }
