@@ -4,7 +4,6 @@ Author: Zita Huang (m272898)
 Lab04 Part 1
 ********************/
 #include <iostream>
-#include <stream>
 #include <fstream>
 using namespace std;
 
@@ -29,16 +28,13 @@ using namespace std;
 
         while (fin >> time >> temp)
         {  
-            double Fah = (9.0/5.0)*(temp)+32.0;
+            double Fah = ((9.0/5.0)*(temp))+32.0;
 
             Fsum = Fah + Fsum;
             count = count + 1.0;
         }
-        if(count > 0)
-        {
-            cout << "file: " << file << endl;
-            cout << "ave: " << Fsum/count << endl;
-        }
+        cout << "file: " << file << endl;
+        cout << "ave: " << double(Fsum/count) << endl;
 
         return 0;
     }
