@@ -2,37 +2,30 @@
 using namespace std;
 
 int main() {
-    double a, b;
-    char comma;
-    string command;
-    double num;
+    int cookies, eaten, days = 0, piggiest = 0, totalEaten = 0;
 
-    // Input a and b
-    cout << "Values for a and b? ";
-    cin >> a >> comma >> b;
+    cout << "How many cookies? ";
+    cin >> cookies;
 
-    // Input the command
-    cout << "What do you want? ";
-    cin.ignore();
-    cin >> command;
+    while (cookies > 0) {
+        days++;
+        cout << "Cookies eaten on day " << days << ": ";
+        cin >> eaten;
 
-    // Process commands
-    if (command == "square") {
-        char var;
-        cin >> var; // Read which variable (a or b) to square
-        if (var == 'a') a = a * a;
-        else if (var == 'b') b = b * b;
-    } else if (command == "add") {
-        cin >> num >> command; // Read the number and target variable
-        if (command == "to") {
-            char var;
-            cin >> var; // Read which variable (a or b) to add to
-            if (var == 'a') a += num;
-            else if (var == 'b') b += num;
+        if (eaten > cookies) {
+            cout << "Not enough cookies!" << endl;
+            return 1;
         }
+
+        cookies -= eaten;
+        totalEaten += eaten;
+        if (eaten > piggiest) piggiest = eaten;
     }
 
-    // Output the result
-    cout << "a = " << a << " and b = " << b << endl;
+    cout << "You ate " << totalEaten << " cookies over " << days << " days." << endl;
+    cout << "On your piggiest day you ate " << piggiest << " cookies." << endl;
+
     return 0;
 }
+
+
