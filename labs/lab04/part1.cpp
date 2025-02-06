@@ -5,36 +5,45 @@ Lab04 Part 1
 ********************/
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <iomanip>  // For output formatting
 using namespace std;
 
-    int main()
+int main()
+{
+    string file;
+    cin >> file;
+
+    ifstream fin(file);
+
+    //Error message if file does not exist
+    if (!fin)
     {
-        string file;
-        cin >> file;
-
-        ifstream fin(file);
-
-        if(!fin)
-        {
-            cout << "Could not open file '" << file << "'" << endl;
-            return 1;
-        }
-
-        double temp, count, Fsum;
-        Fsum = 0.0;
-        count = 0.0;
-
-        string time;
-
-        while (fin >> time >> temp)
-        {  
-            double Fah = ((9.0/5.0)*(temp))+32.0;
-
-            Fsum = Fah + Fsum;
-            count = count + 1.0;
-        }
-        cout << "file: " << file << endl;
-        cout << "ave: " << double(Fsum/count) << endl;
-
-        return 0;
+        cout << "Could not open file '" << file << "'" << endl;
+        return 1;
     }
+
+    //Declaring the variables and strings
+    double Total = 0.0;
+    int count = 0;
+    string time, temp;
+    fin >> time >> temp;
+
+    // While loop to convert Celisus to Fahrenheit
+    while (fin >> time >> temp)
+    {
+        double F = 0.0;
+        fin >> F;
+
+        F = ((9.0/5.0)*F)+32.0;
+        Total += F;
+        count++;
+    }
+
+    //Outputing filename and average
+    cout << "file: " << file << endl;
+    cout << "ave: " << (Total/count) << endl;
+    
+    return 0;
+}
+        

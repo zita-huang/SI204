@@ -1,51 +1,40 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <iomanip>  // For formatting output
 using namespace std;
 
 int main()
 {
     string file;
-    cin >> file;  // Input the filename
+    cin >> file;  // Read filename from user
 
-    ifstream fin(file);  // Open the file
-
-    if (!fin)
+    ifstream fin(file);
+    if (!fin)  // Check if file exists
     {
-        cout << "Could not open file '" << file << "'" << endl;  // Error if file can't be opened
-        return 1;
+        cout << "Could not open file '" << file << "'" << endl;
+        return 1;  // Indicate error
     }
 
-    double temp, Fsum = 0.0;  // Fsum stores the sum of Fahrenheit values
-    int count = 0;  // Count of valid temperatures
+    string time;
+    double temp, sum = 0.0, count = 0.0;
 
-    string time;  // Variable to hold the time column (which we don't use)
-
-    // Read each line from the file
-    while (fin >> time >> temp)  // Read the time (ignored) and temp (used)
+    while (fin >> time >> temp)  // Read time and temperature
     {
-        // Output the raw data for debugging purposes
-        cout << "Raw data: " << time << " " << temp << endl;  // Print time and temp values
-
-        // Convert Celsius to Fahrenheit
-        double Fah = (9.0 / 5.0) * temp + 32.0;
-        
-        Fsum += Fah;  // Accumulate the Fahrenheit value
-        count++;  // Increment the count for each valid temperature
+        double Tf = ((9.0 / 5.0) * temp) + 32.0;  // Convert Celsius to Fahrenheit
+        sum += Tf;
+        count++;
     }
 
-    // Check if we have read any valid temperatures
-    if (count > 0)
+    if (count == 0)  // Check for empty file
     {
-        // Compute and output the average Fahrenheit value
-        cout << "File: " << file << endl;
-        cout << "Average Fahrenheit: " << Fsum / count << endl;  // Calculate average
-    }
-    else
-    {
-        cout << "No valid data to process." << endl;  // If no valid data was processed
+        cout << "No valid temperature data found." << endl;
+        return 1;  // Indicate error
     }
 
-    return 0;
+    cout << "file: " << file << endl;
+    cout << "ave: " << fixed << setprecision(4) << (sum / count) << endl;
+
+    return 0;  // Indicate success
 }
+
 
