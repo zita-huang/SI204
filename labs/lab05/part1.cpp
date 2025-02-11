@@ -1,7 +1,7 @@
 /*************
 Filename: part1.cpp
 Author: MIDN Zita Huang (m272898)
-Lab05 Part1
+Lab 5 Part 1(Board game)
 *************/
 #include<iostream>
 #include<fstream>
@@ -13,6 +13,7 @@ using namespace std;
         string board;
         cin >> board;
 
+        //Check to see that entry is valid
         ifstream fin(board);
         if (!fin)
         {
@@ -20,32 +21,36 @@ using namespace std;
             return 1;
         } 
 
-        string width, equal;
-        int num, pos, row, column;
-        fin >> width >> equal >> num;
-        cout << "Enter position between 1 and " << num << ": ";
+        //string the width because it does not need to be read
+        //int the position so that it can read it
+        string space;
+        int width, pos;
+        fin >> space >> space >> width;
+        cout << "Enter position between 1 and " << width << ": ";
         cin >> pos;
-        if(pos > num)
+
+        //If statement for the boundaries of the position
+        if(pos < 1 || pos > width)
         {
             cout << "Invalid position!" << endl;
             return 1;
         }
-        else
+
+        //Output the board type
+        //Use while loop to see if there is an X in the inputted position
+        //count the step in the while loop outside the if statement
+        string line;
+        getline(fin, line);
+        int step = 1;
+        while(getline(fin, line))
         {
-            string type;
-            while(getline(fin, type))
+            if(line[pos] == 'X')
             {
-                if(pos = "X")
-                {
-                    cout << "died" << endl;
-                }
-                else 
-                    cout << "survived" << endl;
+                cout << "You died on step " << step << endl;
+                return 0;
             }
+            step++;
         }
-       
-
-
-
+        cout << "You survived!" << endl;
         return 0;
     }
