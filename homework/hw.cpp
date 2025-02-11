@@ -4,79 +4,35 @@ Author: MIDN Zita Huang (m272898)
 Homework 12
 ****************/
 #include <iostream>
-#include <fstream>
-#include <string>
 using namespace std;
 
     int main()
     {
-       //input the filename
-       string filename;
-       cout << "Filename: ";
-       cin >> filename;
-<<<<<<< HEAD
+        //get user input on width, height, and offset
+        int width, height, offset;
+        cout << "Enter height (greater than 2): ";
+        cin >> height;
+        cout << " Enter width (greater than 2): ";
+        cin >> width;
+        cout << "Enter offset: ";
+        cin >> offset;
 
-       ifstream fin(filename)
-       if(!fin)
-       {
-        cout << "File does not exist!" << endl;
-        return 1;
-       }
-
-       int row, column;
-       fin >> row >> column;
-
-       int table[row][column];
-
-       for(int i = 0; i < row; i++)
-       {
-            for(int j = 0; j < cloumn; j++)
+        //for loop for the height
+        for (int i = 0; i < height; i++) 
+        {
+            //for loop to display the offset
+            //for loop to display the * not in offset
+            for (int j = 0; j < offset; j++) cout << ' ';
+            for (int j = 0; j < width; j++) 
             {
-                
-            }
-       }
-=======
->>>>>>> 330da9ea434f32f75539fc83524e615029aca479
+                //If statement to determine the * and blank spots
+                if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
+                    cout << '*';
+                else
+                    cout << ' ';
+        }
+        cout << endl;
+    }
 
-       ifstream fin(filename);
-       if (!fin)
-       {
-        cout << "File not found" << endl;
-        return 1;
-       }
-
-       int row, column;
-       fin >> row >> column;
-
-        //making the table
-        //Used W3 schools as a reference to make table
-       int table[row][column];
-
-        //for loops to calculate the number of rows and columns
-       for(int i = 0; i < row; i++)
-       {
-            for(int j = 0; j < column; j++)
-            {
-                fin >> table[i][j];
-            }
-       }
-
-        //create the output file in html
-        //create the border number for the table
-       ofstream fout("output.html");
-       fout << "<table border=2>\n";
-
-       //for loop to generate the table in output.html
-       for(int i = 0; i < row; i++)
-       {
-            fout << "<tr>";
-            for(int j = 0; j < column; j++)
-            {
-                fout << "<td>" << table[i][j] << "</td>";
-            }
-            fout << "</tr>\n";
-       }
-       fout << "</table>\n";
-       cout << "Created output.html" << endl;
         return 0;
     }

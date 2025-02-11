@@ -2,29 +2,26 @@
 using namespace std;
 
 int main() {
-    int cookies, eaten, days = 0, piggiest = 0, totalEaten = 0;
+    int height, width, offset;
 
-    cout << "How many cookies? ";
-    cin >> cookies;
+    cout << "Enter height (greater than 2): ";
+    cin >> height;
+    cout << "Enter width  (greater than 2): ";
+    cin >> width;
+    cout << "Enter offset: ";
+    cin >> offset;
 
-    while (cookies > 0) {
-        days++;
-        cout << "Cookies eaten on day " << days << ": ";
-        cin >> eaten;
-
-        if (eaten > cookies) {
-            cout << "Not enough cookies!" << endl;
-            return 1;
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < offset; j++) cout << ' ';
+        for (int j = 0; j < width; j++) {
+            if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
+                cout << '*';
+            else
+                cout << ' ';
         }
-
-        cookies -= eaten;
-        totalEaten += eaten;
-        if (eaten > piggiest) piggiest = eaten;
+        cout << endl;
     }
-
-    cout << "You ate " << totalEaten << " cookies over " << days << " days." << endl;
-    cout << "On your piggiest day you ate " << piggiest << " cookies." << endl;
-
+    
     return 0;
 }
 
