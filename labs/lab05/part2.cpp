@@ -8,21 +8,25 @@ using namespace std;
 
     int main()
     {
-        int count;
-        
-        //Get user input on desired number
         int num1;
-        cout << "Enter total numbers in the Fibonacci series (0 to exit): ";
-        cin >> num1;
 
-        if(num1 == 0)
+        //Program will run forever until 0
+        while(true)
         {
-            cout << "Program terminated." << endl;
-            return 1;
-        }
-
+            //get user input
+            cout << "Enter total numbers in the Fibonacci series (0 to exit): ";
+            cin >> num1;
+            //if number entered is a 0, program will end
+            if(num1 == 0)
+            {
+                cout << "Program terminated." << endl;
+                return 1;
+            }
+        //Displaying results
          int n1 = 0, n2 = 1;
          cout << "Result: ";
+
+        //For loop to do the calculations
         for(int i = 1; i <= num1; i++)
         {
             cout << n1 << " ";
@@ -32,14 +36,7 @@ using namespace std;
             n2 = nextnum1;
         }
         cout << endl;
-    }
-
-
-        //If user enters 0, program will terminate
-
-        //for loop to add the number consecutively with each other
-        //update n1 to be n2, and n2 to be the sum of the n1 and n2
-        //will continue until the number entered in the beginning is reached
-         
+        }
+   
         return 0;
     }
