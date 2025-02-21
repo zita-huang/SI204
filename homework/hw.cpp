@@ -1,38 +1,55 @@
-/*****************
-File name: hw.cpp
+/**********
+Filename: hw.cpp
 Author: MIDN Zita Huang (m272898)
-Homework 12
-****************/
+Homework 15
+**********/
 #include <iostream>
 using namespace std;
 
-    int main()
+//==========================================
+// Give the prototype of firstfactor below
+int firstfactor(int n);
+//==========================================
+// main function
+int main()
+{
+  // Get integer n, n > 1, from user
+  int n;
+  cout << "Enter an integer larger than 1: ";
+  cin >> n;
+
+  // Print out factorization
+  cout << "The factorization of " << n << " is ";
+  while(n > 1)
+  {
+    // get & print next prime factor
+    int f = firstfactor(n);
+    cout << '(' << f << ')';
+    n = n / f;
+  }
+  cout << endl;
+
+  return 0;
+}
+
+//==========================================
+// Define firstfactor below
+int firstfactor(int n)
+{
+    //If divisble by 2, then output 2
+    if(n % 2 == 0)
     {
-        //get user input on width, height, and offset
-        int width, height, offset;
-        cout << "Enter height (greater than 2): ";
-        cin >> height;
-        cout << " Enter width (greater than 2): ";
-        cin >> width;
-        cout << "Enter offset: ";
-        cin >> offset;
+        return 2;
+    }
 
-        //for loop for the height
-        for (int i = 0; i < height; i++) 
+    //If not divisible by two then divide by the second smallest prime number
+    for(int i = 3; i*i <= n; i+=2)
+    {
+        if(n % i == 0)
         {
-            //for loop to display the offset
-            //for loop to display the * not in offset
-            for (int j = 0; j < offset; j++) cout << ' ';
-            for (int j = 0; j < width; j++) 
-            {
-                //If statement to determine the * and blank spots
-                if (i == 0 || i == height - 1 || j == 0 || j == width - 1)
-                    cout << '*';
-                else
-                    cout << ' ';
+            return i;
         }
-        cout << endl;
     }
 
-        return 0;
-    }
+    return n;
+}
